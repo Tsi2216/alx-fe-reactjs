@@ -3,12 +3,17 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import WelcomeMessage from './WelcomeMessage'; // Import the WelcomeMessage component
+import Header from './Header'; // Import the Header component
+import MainContent from './MainContent'; // Import the MainContent component
+import Footer from './Footer'; // Import the Footer component
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
+      <Header /> {/* Include the Header component */}
+      <MainContent /> {/* Include the MainContent component */}
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -30,6 +35,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Footer /> {/* Include the Footer component */}
     </>
   );
 }
