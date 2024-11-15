@@ -2,11 +2,11 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import WelcomeMessage from './WelcomeMessage'; // Import the WelcomeMessage component
-import Header from './Header'; // Import the Header component
-import MainContent from './MainContent'; // Import the MainContent component
-import Footer from './Footer'; // Import the Footer component
-import UserProfile from './components/UserProfile'; // Import the UserProfile component
+import WelcomeMessage from './components/WelcomeMessage'; // Updated path for WelcomeMessage
+import Header from './components/Header'; // Updated path for Header
+import MainContent from './components/MainContent'; // Updated path for MainContent
+import Footer from './components/Footer'; // Updated path for Footer
+import UserProfile from './components/UserProfile'; // Path for UserProfile remains the same
 
 function App() {
   const [count, setCount] = useState(0);
