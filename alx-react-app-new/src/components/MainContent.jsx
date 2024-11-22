@@ -9,11 +9,11 @@ const MainContent = () => {
             margin: '20px auto',
             maxWidth: '600px'
         }}>
-            <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '20px', fontWeight: 'bold' }}> {/* Darker gray for better contrast */}
+            <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '20px', fontWeight: 'bold' }}>
                 Travel Destinations
             </h2>
-            <p style={{ fontSize: '1.2rem', color: '#666', lineHeight: '1.5' }}> {/* Medium gray for text */}
-                I love to visit <strong style={{ color: '#007BFF' }}>New York</strong>, <strong style={{ color: '#007BFF' }}>Paris</strong>, and <strong style={{ color: '#007BFF' }}>Tokyo</strong>. {/* Bootstrap primary color for emphasis */}
+            <p style={{ fontSize: '1.2rem', color: '#666', lineHeight: '1.5' }}>
+                I love to visit New York, Paris, and Tokyo.
             </p>
             <button style={{
                 padding: '10px 20px',
