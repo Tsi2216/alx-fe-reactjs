@@ -12,12 +12,20 @@ const Footer = () => {
         }}>
             <p style={{ margin: '5px 0', fontSize: '1rem' }}>© 2023 City Lovers</p>
             <div>
-                <a href="https://facebook.com" style={{ color: 'white', margin: '0 10px' }}>Facebook</a>
-                <a href="https://twitter.com" style={{ color: 'white', margin: '0 10px' }}>Twitter</a>
-                <a href="https://instagram.com" style={{ color: 'white', margin: '0 10px' }}>Instagram</a>
+                <a href="https://facebook.com" className="fa fa-facebook" style={iconStyle}></a>
+                <a href="https://twitter.com" className="fa fa-twitter" style={iconStyle}></a>
+                <a href="https://instagram.com" className="fa fa-instagram" style={iconStyle}></a>
             </div>
         </footer>
     );
+};
+
+const iconStyle = {
+    padding: '10px',
+    fontSize: '30px',
+    color: 'white',
+    textDecoration: 'none',
+    transition: 'opacity 0.3s',
 };
 
 export default Footer;
