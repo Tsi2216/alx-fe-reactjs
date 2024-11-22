@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <footer style={{
-            background: 'linear-gradient(to right, navy, darkblue)',
+            backgroundColor: 'lightblue', // Set the background color to light gray
             color: 'white',
             textAlign: 'center',
             padding: '20px',
