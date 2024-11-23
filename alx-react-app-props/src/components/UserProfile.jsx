@@ -1,9 +1,14 @@
-const UserProfile = (props) => {
+import React, { useContext } from 'react'; // Import React and useContext
+import { UserContext } from './UserContext'; // Adjusted path for same folder
+
+const UserProfile = () => {
+    const userData = useContext(UserContext); // Access user data from context
+
     return (
         <div>
-            <h2>{props.name}</h2>
-            <p>Age: {props.age}</p>
-            <p>Bio: {props.bio}</p>
+            <h2>{userData.name}</h2> {/* Use userData from context */}
+            <p>Age: {userData.age}</p> {/* Ensure age is part of userData */}
+            <p>Bio: {userData.bio}</p> {/* Ensure bio is part of userData */}
         </div>
     );
 };
