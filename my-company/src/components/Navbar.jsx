@@ -46,28 +46,28 @@ function Navbar() {
                 }}>
                     <Link 
                         to="/" 
-                        style={linkStyle(activeLink === '/')}
+                        style={linkStyle(activeLink === '/', '#007bff')}
                         onClick={() => { setActiveLink('/'); setMobileMenuOpen(false); }}
                     >
                         Home
                     </Link>
                     <Link 
                         to="/about" 
-                        style={linkStyle(activeLink === '/about')}
+                        style={linkStyle(activeLink === '/about', '#007bff')}
                         onClick={() => { setActiveLink('/about'); setMobileMenuOpen(false); }}
                     >
                         About
                     </Link>
                     <Link 
                         to="/services" 
-                        style={linkStyle(activeLink === '/services')}
+                        style={linkStyle(activeLink === '/services', '#007bff')}
                         onClick={() => { setActiveLink('/services'); setMobileMenuOpen(false); }}
                     >
                         Services
                     </Link>
                     <Link 
                         to="/contact" 
-                        style={linkStyle(activeLink === '/contact')}
+                        style={linkStyle(activeLink === '/contact', '#007bff')}
                         onClick={() => { setActiveLink('/contact'); setMobileMenuOpen(false); }}
                     >
                         Contact
@@ -78,7 +78,7 @@ function Navbar() {
     );
 }
 
-const linkStyle = (isActive) => ({
+const linkStyle = (isActive, backgroundColor) => ({
     margin: '0 15px',
     color: '#fff',
     fontWeight: isActive ? 'bold' : 'normal',
@@ -86,7 +86,7 @@ const linkStyle = (isActive) => ({
     transition: 'color 0.3s',
     padding: isActive ? '10px 15px' : '10px',
     borderRadius: isActive ? '5px' : '0',
-    background: isActive ? 'rgba(255, 255, 255, 0.2)' : 'transparent',
+    background: isActive ? 'rgba(255, 255, 255, 0.2)' : backgroundColor,
 });
 
 export default Navbar;
