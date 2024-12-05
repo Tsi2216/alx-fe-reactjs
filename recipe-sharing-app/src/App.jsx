@@ -1,4 +1,4 @@
-import { useRecipeStore } from './stores/recipeStore';
+import { useRecipeStore } from './components/RecipeList';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';

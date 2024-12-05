@@ -1,4 +1,4 @@
-import { useRecipeStore } from '../stores/recipeStore';
+import { useRecipeStore } from '../recipeStore.js';
 import EditRecipeForm from './EditRecipeForm';
 import DeleteRecipeButton from './DeleteRecipeButton';
 
