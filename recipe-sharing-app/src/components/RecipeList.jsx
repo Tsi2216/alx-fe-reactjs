@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRecipeStore } from './recipeStore';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const RecipeList = () => {
   const recipes = useRecipeStore(state => state.filteredRecipes); // Use filtered recipes
@@ -56,7 +57,9 @@ const RecipeList = () => {
     <div style={recipeListStyle}>
       {recipes.map(recipe => (
         <div style={recipeItemStyle} key={recipe.id}>
-          <h3 style={recipeTitleStyle}>{recipe.title}</h3>
+          <Link to={`/recipes/${recipe.id}`} style={{ textDecoration: 'none' }}>
+            <h3 style={recipeTitleStyle}>{recipe.title}</h3>
+          </Link>
           <p style={recipeDescriptionStyle}>{recipe.description}</p>
           <button onClick={() => deleteRecipe(recipe.id)}>Delete</button>
         </div>
