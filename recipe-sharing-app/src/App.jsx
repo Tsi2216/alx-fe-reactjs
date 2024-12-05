@@ -4,11 +4,10 @@ import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails'; 
 import EditRecipeForm from './components/EditRecipeForm';
+import SearchBar from './components/SearchBar'; 
 import './App.css';
 
 function App() {
-  // Access the Zustand store
-  const recipes = useRecipeStore(state => state.recipes);
   const addRecipe = useRecipeStore(state => state.addRecipe);
 
   return (
@@ -16,9 +15,11 @@ function App() {
       <div>
         <h1>Recipe Sharing App</h1>
         <AddRecipeForm addRecipe={addRecipe} />
+        <SearchBar /> {/* Add the SearchBar here */}
         <Routes>
           <Route path="/recipe/:id" element={<RecipeDetails />} />
-          <Route path="/" element={<RecipeList recipes={recipes} />} />
+          <Route path="/edit/:id" element={<EditRecipeForm />} />
+          <Route path="/" element={<RecipeList />} />
         </Routes>
       </div>
     </Router>

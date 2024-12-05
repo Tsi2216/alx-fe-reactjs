@@ -2,14 +2,20 @@ import { useEffect, useState } from 'react';
 import { useRecipeStore } from './recipeStore';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore(state => state.recipes);
+  const recipes = useRecipeStore(state => state.filteredRecipes); // Use filtered recipes
   const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
+  const filterRecipes = useRecipeStore(state => state.filterRecipes); // Ensure you have this action
+  const searchTerm = useRecipeStore(state => state.searchTerm); // Get the current search term
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    filterRecipes(); // Call filterRecipes whenever the search term changes
+  }, [searchTerm, filterRecipes]);
 
   if (loading) {
     return <p>Loading recipes...</p>;
