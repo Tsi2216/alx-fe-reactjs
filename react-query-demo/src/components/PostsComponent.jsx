@@ -13,7 +13,7 @@ const fetchPosts = async () => {
 };
 
 const PostsComponent = () => {
-  const { data, error, isLoading, isError } = useQuery('posts', fetchPosts, {
+  const { data, error, isLoading, isError, refetch } = useQuery('posts', fetchPosts, {
     cacheTime: 1000 * 60 * 5, // Cache data for 5 minutes
     staleTime: 1000 * 60 * 1, // Data is considered fresh for 1 minute
     refetchOnWindowFocus: true, // Refetch data when the window is focused
@@ -38,6 +38,7 @@ const PostsComponent = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
         className="search-input"
       />
+      <button onClick={refetch} className="refetch-button">Refetch Posts</button>
       <ul className="posts-list">
         {filteredPosts.map(post => (
           <li key={post.id} className="post-item">
