@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home'; // Import Home component
 import Profile from './components/Profile'; // Import Profile component
 import UserProfile from './components/UserProfile'; // Import UserProfile component
+import BlogPost from './components/BlogPost'; // Import BlogPost component
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           } 
         />
         <Route path="/user/:userId" element={<UserProfile />} /> {/* UserProfile route */}
+        <Route path="/blog/:id" element={<BlogPost />} /> {/* BlogPost route */}
       </Routes>
     </Router>
   );
