@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const RegistrationForm = () => {
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     const initialValues = {
         username: '',
         email: '',
@@ -31,17 +35,32 @@ const RegistrationForm = () => {
                 <Form>
                     <div>
                         <label>Username:</label>
-                        <Field type="text" name="username" />
+                        <Field 
+                            type="text" 
+                            name="username" 
+                            value={username} 
+                            onChange={(e) => setUsername(e.target.value)} 
+                        />
                         <ErrorMessage name="username" component="div" />
                     </div>
                     <div>
                         <label>Email:</label>
-                        <Field type="email" name="email" />
+                        <Field 
+                            type="email" 
+                            name="email" 
+                            value={email} 
+                            onChange={(e) => setEmail(e.target.value)} 
+                        />
                         <ErrorMessage name="email" component="div" />
                     </div>
                     <div>
                         <label>Password:</label>
-                        <Field type="password" name="password" />
+                        <Field 
+                            type="password" 
+                            name="password" 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
+                        />
                         <ErrorMessage name="password" component="div" />
                     </div>
                     <button type="submit" disabled={isSubmitting}>
