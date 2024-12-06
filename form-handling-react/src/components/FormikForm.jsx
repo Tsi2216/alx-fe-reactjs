@@ -39,32 +39,32 @@ const FormikForm = () => {
                     <div>
                         <label>Username:</label>
                         <Field type="text" name="username" />
-                        <ErrorMessage name="username" component="div" />
+                        <ErrorMessage name="username" component="div" className="error" />
                     </div>
                     <div>
                         <label>Email:</label>
                         <Field type="email" name="email" />
-                        <ErrorMessage name="email" component="div" />
+                        <ErrorMessage name="email" component="div" className="error" />
                     </div>
                     <div>
                         <label>Password:</label>
                         <Field type="password" name="password" />
-                        <ErrorMessage name="password" component="div" />
+                        <ErrorMessage name="password" component="div" className="error" />
                     </div>
                     <div>
                         <label>Confirm Password:</label>
                         <Field type="password" name="confirmPassword" />
-                        <ErrorMessage name="confirmPassword" component="div" />
+                        <ErrorMessage name="confirmPassword" component="div" className="error" />
                     </div>
                     <div>
                         <label>Phone:</label>
                         <Field type="text" name="phone" />
-                        <ErrorMessage name="phone" component="div" />
+                        <ErrorMessage name="phone" component="div" className="error" />
                     </div>
                     <div>
                         <Field type="checkbox" name="terms" />
                         <label htmlFor="terms">I agree to the terms and conditions</label>
-                        <ErrorMessage name="terms" component="div" />
+                        <ErrorMessage name="terms" component="div" className="error" />
                     </div>
                     <button type="submit" disabled={isSubmitting}>
                         Register
