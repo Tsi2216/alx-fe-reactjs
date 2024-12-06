@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home'; // Import Home component
-import Profile from './components/Profile/Profile'; // Import Profile component
+import Profile from './components/Profile'; // Import Profile component
 import UserProfile from './components/UserProfile'; // Import UserProfile component
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 
