@@ -13,11 +13,11 @@ const fetchPosts = async () => {
 };
 
 const PostsComponent = () => {
-  const { data, error, isLoading } = useQuery('posts', fetchPosts);
+  const { data, error, isLoading, isError } = useQuery('posts', fetchPosts);
   const [searchTerm, setSearchTerm] = useState('');
 
   if (isLoading) return <div className="spinner">Loading...</div>;
-  if (error) return <div className="error">Error: {error.message}</div>;
+  if (isError) return <div className="error">Error: {error.message}</div>;
 
   // Filter posts based on the search term
   const filteredPosts = data.filter(post =>
