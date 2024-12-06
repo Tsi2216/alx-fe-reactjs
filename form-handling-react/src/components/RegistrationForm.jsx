@@ -19,7 +19,26 @@ const RegistrationForm = () => {
         password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
     });
 
-    const handleSubmit = (values, { setSubmitting }) => {
+    const handleSubmit = (values, { setSubmitting, setErrors }) => {
+        // Custom validation logic
+        const errors = {};
+        if (!username) {
+            errors.username = 'Username is required';
+        }
+        if (!email) {
+            errors.email = 'Email is required';
+        }
+        if (!password) {
+            errors.password = 'Password is required';
+        }
+
+        // If there are errors, set them and stop submission
+        if (Object.keys(errors).length > 0) {
+            setErrors(errors);
+            setSubmitting(false);
+            return;
+        }
+
         // Simulate API call
         console.log(values);
         setSubmitting(false);
