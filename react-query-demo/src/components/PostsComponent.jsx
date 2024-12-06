@@ -13,7 +13,12 @@ const fetchPosts = async () => {
 };
 
 const PostsComponent = () => {
-  const { data, error, isLoading, isError } = useQuery('posts', fetchPosts);
+  const { data, error, isLoading, isError } = useQuery('posts', fetchPosts, {
+    cacheTime: 1000 * 60 * 5, // Cache data for 5 minutes
+    staleTime: 1000 * 60 * 1, // Data is considered fresh for 1 minute
+    refetchOnWindowFocus: true, // Refetch data when the window is focused
+    keepPreviousData: true, // Keep previous data while fetching new data
+  });
   const [searchTerm, setSearchTerm] = useState('');
 
   if (isLoading) return <div className="spinner">Loading...</div>;
