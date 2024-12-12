@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import TodoList from '../components/TodoList'; 
 
 describe('TodoList Component', () => {
-    // Create a beforeEach to render the component before each test
     beforeEach(() => {
         render(<TodoList />);
     });
@@ -15,22 +14,22 @@ describe('TodoList Component', () => {
     });
 
     test('adds a new todo', () => {
-        fireEvent.change(screen.getByPlaceholderText(/Add a new todo/i), { target: { value: 'New Todo' } });
-        fireEvent.click(screen.getByText(/Add/i));
+        userEvent.type(screen.getByPlaceholderText(/Add a new todo/i), 'New Todo');
+        userEvent.click(screen.getByRole('button', { name: /Add Todo/i }));
         expect(screen.getByText(/New Todo/i)).toBeInTheDocument();
     });
 
     test('toggles a todo', () => {
         const todoItem = screen.getByText(/Learn React/i);
-        fireEvent.click(todoItem);
+        userEvent.click(todoItem);
         expect(todoItem).toHaveStyle('text-decoration: line-through');
-        fireEvent.click(todoItem); // Toggle back
+        userEvent.click(todoItem); // Toggle back
         expect(todoItem).not.toHaveStyle('text-decoration: line-through');
     });
 
     test('deletes a todo', async () => {
         const deleteButtons = screen.getAllByText(/Delete/i);
-        userEvent.click(deleteButtons[0]); // Click the first delete button
+        userEvent.click(deleteButtons); // Click the first delete button
         await waitFor(() => {
             expect(screen.queryByText(/Learn React/i)).not.toBeInTheDocument();
         });
