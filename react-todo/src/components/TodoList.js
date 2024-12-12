@@ -7,11 +7,11 @@ const TodoList = () => {
     ]);
     const [newTodo, setNewTodo] = useState('');
 
-    const addTodo = (e) => {
-        e.preventDefault();
-        if (!newTodo) return;
-        setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
-        setNewTodo('');
+    const addTodo = () => {
+        if (newTodo) {
+            setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
+            setNewTodo('');
+        }
     };
 
     const toggleTodo = (id) => {
@@ -26,27 +26,19 @@ const TodoList = () => {
 
     return (
         <div>
-            <form onSubmit={addTodo}>
-                <input 
-                    type="text" 
-                    value={newTodo} 
-                    onChange={(e) => setNewTodo(e.target.value)} 
-                    placeholder="Add a new todo" 
-                />
-                <button type="submit">Add Todo</button>
-            </form>
+            <h1>Todo List</h1>
+            <input 
+                type="text" 
+                value={newTodo} 
+                onChange={(e) => setNewTodo(e.target.value)} 
+                placeholder="Add a new todo" 
+            />
+            <button onClick={addTodo}>Add</button>
             <ul>
                 {todos.map(todo => (
-                    <li 
-                        key={todo.id} 
-                        onClick={() => toggleTodo(todo.id)} 
-                        style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-                    >
+                    <li key={todo.id} onClick={() => toggleTodo(todo.id)} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
                         {todo.text}
-                        <button onClick={(e) => {
-                            e.stopPropagation(); // Prevent the click from bubbling up
-                            deleteTodo(todo.id);
-                        }}>Delete</button>
+                        <button onClick={() => deleteTodo(todo.id)}>Delete</button>
                     </li>
                 ))}
             </ul>

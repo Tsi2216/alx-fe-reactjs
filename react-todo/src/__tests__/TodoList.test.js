@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'; // Import userEvent
-import TodoList from './TodoList';
+import TodoList from '../components/TodoList'; // Adjusted import path
 
 describe('TodoList Component', () => {
     beforeEach(() => {
@@ -15,7 +15,7 @@ describe('TodoList Component', () => {
 
     test('adds a new todo', () => {
         fireEvent.change(screen.getByPlaceholderText(/Add a new todo/i), { target: { value: 'New Todo' } });
-        fireEvent.click(screen.getByText(/Add Todo/i));
+        fireEvent.click(screen.getByText(/Add/i)); // Ensure the button text matches
         expect(screen.getByText(/New Todo/i)).toBeInTheDocument();
     });
 

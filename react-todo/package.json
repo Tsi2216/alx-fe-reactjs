@@ -5,7 +5,6 @@
   "dependencies": {
     "@testing-library/user-event": "^14.5.2",
     "cra-template": "1.2.0",
-    "punycode": "^2.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
@@ -42,12 +41,19 @@
     "jest": "^27.5.1"
   },
   "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!your-module-name)"
+    "clearMocks": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
     ],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "identity-obj-proxy",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
-    }
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!your-module-name)"
+    ]
   }
 }
