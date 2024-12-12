@@ -27,8 +27,8 @@ describe('TodoList Component', () => {
 
     test('deletes a todo', () => {
         render(<TodoList />);
-        const deleteButton = screen.getAllByText(/Delete/i);
-        fireEvent.click(deleteButton);
+        const deleteButtons = screen.getAllByText(/Delete/i);
+        fireEvent.click(deleteButtons); // Click the first delete button
         expect(screen.queryByText(/Learn React/i)).not.toBeInTheDocument();
     });
 });
