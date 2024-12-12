@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'; // Import userEvent
-import TodoList from '../components/TodoList'; // Adjusted import path
+import TodoList from '../components/TodoList'; 
 
 describe('TodoList Component', () => {
     beforeEach(() => {
