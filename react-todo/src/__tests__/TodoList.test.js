@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'; // Import userEvent
+import userEvent from '@testing-library/user-event';
 import TodoList from '../components/TodoList'; 
 
 describe('TodoList Component', () => {
+    // Create a beforeEach to render the component before each test
     beforeEach(() => {
         render(<TodoList />);
     });
@@ -15,7 +16,7 @@ describe('TodoList Component', () => {
 
     test('adds a new todo', () => {
         fireEvent.change(screen.getByPlaceholderText(/Add a new todo/i), { target: { value: 'New Todo' } });
-        fireEvent.click(screen.getByText(/Add/i)); // Ensure the button text matches
+        fireEvent.click(screen.getByText(/Add/i));
         expect(screen.getByText(/New Todo/i)).toBeInTheDocument();
     });
 
@@ -28,10 +29,10 @@ describe('TodoList Component', () => {
     });
 
     test('deletes a todo', async () => {
-        const deleteButtons = screen.getAllByText(/Delete/i); // Get all delete buttons
-        userEvent.click(deleteButtons); // Click the first delete button
+        const deleteButtons = screen.getAllByText(/Delete/i);
+        userEvent.click(deleteButtons[0]); // Click the first delete button
         await waitFor(() => {
-            expect(screen.queryByText(/Learn React/i)).not.toBeInTheDocument(); // Check if the todo is removed
+            expect(screen.queryByText(/Learn React/i)).not.toBeInTheDocument();
         });
     });
 });
