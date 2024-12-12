@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoList'; 
-import AddTodoForm from './components/AddTodoForm'; // Import the AddTodoForm component
+import AddTodoForm from './components/AddTodoForm'; 
+import { someFunction } from './__tests__/TodoList.test.js';
 import './App.css';
 
 function App() {
