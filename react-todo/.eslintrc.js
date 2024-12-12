@@ -1,8 +1,8 @@
-module.exports = {
-    extends: [
-        'plugin:testing-library/react'
+{
+    "plugins": [
+        "testing-library"
     ],
-    rules: {
-        'testing-library/no-render-in-setup': 'error',
-    },
-};
+    "extends": [
+        "plugin:testing-library/react"
+    ]
+}
