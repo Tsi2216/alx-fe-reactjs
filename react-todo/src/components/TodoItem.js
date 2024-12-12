@@ -1,42 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const TodoItem = ({ todo, onToggle, onDelete, onUpdate }) => {
-    const [isEditing, setIsEditing] = useState(false);
-    const [editText, setEditText] = useState(todo.text);
-
-    const handleUpdate = () => {
-        onUpdate(todo.id, editText);
-        setIsEditing(false);
-    };
-
-    const handleDelete = () => {
-        if (window.confirm('Are you sure you want to delete this todo?')) {
-            onDelete();
-        }
-    };
-
+const TodoItem = ({ todo, onToggle, onDelete, onEdit, editTodoId, editText, setEditText, saveEdit }) => {
     return (
-        <li style={{ backgroundColor: todo.completed ? '#d3ffd3' : '#fff', padding: '10px', margin: '5px 0', borderRadius: '5px' }}>
-            {isEditing ? (
+        <li>
+            {editTodoId === todo.id ? (
                 <input 
-                    type="text" 
                     value={editText} 
                     onChange={(e) => setEditText(e.target.value)} 
-                    onBlur={handleUpdate} 
-                    onKeyDown={(e) => e.key === 'Enter' && handleUpdate()} 
                 />
             ) : (
                 <span 
-                    style={{ textDecoration: todo.completed ? 'line-through' : 'none' }} 
-                    onClick={onToggle}
+                    onClick={onToggle} 
+                    style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
                 >
                     {todo.text}
                 </span>
             )}
-            <button onClick={() => setIsEditing(!isEditing)}>
-                {isEditing ? 'Save' : 'Edit'}
-            </button>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={() => onEdit(todo)}>Edit</button>
+            {editTodoId === todo.id ? (
+                <button onClick={() => saveEdit(todo.id)}>Save</button>
+            ) : (
+                <button onClick={() => onDelete(todo.id)}>Delete</button>
+            )}
         </li>
     );
 };

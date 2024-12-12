@@ -5,11 +5,19 @@ const TodoList = () => {
     const [todos, setTodos] = useState([]);
     const [newTodo, setNewTodo] = useState('');
     const [filter, setFilter] = useState('all');
+    const [editTodoId, setEditTodoId] = useState(null);
+    const [editText, setEditText] = useState('');
 
     useEffect(() => {
         const savedTodos = JSON.parse(localStorage.getItem('todos'));
         if (savedTodos) {
             setTodos(savedTodos);
+        } else {
+            const initialTodos = [
+                { id: 1, text: 'Learn React', completed: false },
+                { id: 2, text: 'Learn Testing', completed: false },
+            ];
+            setTodos(initialTodos);
         }
     }, []);
 
@@ -38,10 +46,17 @@ const TodoList = () => {
         setTodos(todos.filter(todo => todo.id !== id));
     };
 
-    const updateTodo = (id, text) => {
+    const startEdit = (todo) => {
+        setEditTodoId(todo.id);
+        setEditText(todo.text);
+    };
+
+    const saveEdit = (id) => {
         setTodos(todos.map(todo => 
-            todo.id === id ? { ...todo, text } : todo
+            todo.id === id ? { ...todo, text: editText } : todo
         ));
+        setEditTodoId(null);
+        setEditText('');
     };
 
     const filteredTodos = todos.filter(todo => {
@@ -71,7 +86,11 @@ const TodoList = () => {
                         todo={todo} 
                         onToggle={() => toggleTodo(todo.id)} 
                         onDelete={() => deleteTodo(todo.id)} 
-                        onUpdate={updateTodo} 
+                        onEdit={startEdit} 
+                        editTodoId={editTodoId}
+                        editText={editText}
+                        setEditText={setEditText}
+                        saveEdit={saveEdit}
                     />
                 ))}
             </ul>
