@@ -4,6 +4,7 @@ const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [preparation, setPreparation] = useState('');
+  const [steps, setSteps] = useState(''); // New state for steps
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
@@ -11,7 +12,7 @@ const AddRecipeForm = () => {
     setError(''); // Reset error message
 
     // Basic validation
-    if (!title || !ingredients || !preparation) {
+    if (!title || !ingredients || !preparation || !steps) {
       setError('All fields are required!');
       return;
     }
@@ -23,12 +24,13 @@ const AddRecipeForm = () => {
     }
 
     // Here you would typically handle the form submission, e.g., send data to an API
-    console.log('Recipe submitted:', { title, ingredients: ingredientList, preparation });
+    console.log('Recipe submitted:', { title, ingredients: ingredientList, preparation, steps });
 
     // Reset form fields
     setTitle('');
     setIngredients('');
     setPreparation('');
+    setSteps(''); // Reset steps field
   };
 
   return (
@@ -54,6 +56,13 @@ const AddRecipeForm = () => {
         placeholder="Preparation Steps"
         value={preparation}
         onChange={(e) => setPreparation(e.target.value)}
+        className="w-full p-2 mb-4 border rounded"
+        required
+      />
+      <textarea
+        placeholder="Steps (detailed instructions)"
+        value={steps}
+        onChange={(e) => setSteps(e.target.value)}
         className="w-full p-2 mb-4 border rounded"
         required
       />
