@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Im
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import HomePage from './components/HomePage'; // Import the HomePage component
-import RecipeDetail from './components/RecipeDetail'; // Import the RecipeDetail component
+import HomePage from './components/HomePage'; 
+import RecipeDetail from './components/RecipeDetail'; 
+import AddRecipeForm from './components/AddRecipeForm'; // Import AddRecipeForm
 
 function App() {
   const [count, setCount] = useState(0); // State for the counter
@@ -35,6 +36,7 @@ function App() {
         <Routes> {/* Define your routes here */}
           <Route path="/" element={<HomePage />} />
           <Route path="/recipe/:id" element={<RecipeDetail />} />
+          <Route path="/add-recipe" element={<AddRecipeForm />} /> {/* New route for AddRecipeForm */}
         </Routes>
       </div>
     </Router>
