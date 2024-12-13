@@ -14,9 +14,9 @@ const RecipeDetail = () => {
   if (!recipe) return <p>Loading...</p>;
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 shadow-lg"> {/* Added shadow-lg to the container */}
       <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover rounded-lg mb-4" />
+      <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover rounded-lg mb-4 shadow-md" /> {/* Added shadow-md to the image */}
       <h2 className="text-2xl font-semibold mt-4">Ingredients</h2>
       <ul className="list-disc pl-5">
         {recipe.ingredients.map((ingredient, index) => (
