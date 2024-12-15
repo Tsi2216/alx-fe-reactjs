@@ -1,11 +1,6 @@
 import axios from 'axios';
 
-export const fetchUserData = async (username) => {
-    const response = await axios.get(`https://api.github.com/users/${username}`);
-    return response.data;
-};
-
-// Handle 404 errors
+// Set up the response interceptor
 axios.interceptors.response.use(
     response => response,
     error => {
@@ -15,3 +10,8 @@ axios.interceptors.response.use(
         throw error;
     }
 );
+
+export const fetchUserData = async (username) => {
+    const response = await axios.get(`https://api.github.com/users/${username}`);
+    return response.data;
+};
