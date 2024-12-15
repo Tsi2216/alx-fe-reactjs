@@ -20,7 +20,8 @@ const Search = () => {
             setUserData(data);
         } catch (err) {
             console.error(err); // Log the error for debugging
-            setError('Looks like we can’t find the user');
+            // Set a user-friendly error message
+            setError('Looks like we can’t find the user. Please check the username and try again.');
         } finally {
             setLoading(false);
         }
@@ -34,11 +35,12 @@ const Search = () => {
                     value={username}
                     onChange={handleInputChange}
                     placeholder="Enter GitHub username"
+                    required // Ensure the input is not empty
                 />
                 <button type="submit">Search</button>
             </form>
             {loading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>} {/* Style the error message */}
             {userData && (
                 <div>
                     <img src={userData.avatar_url} alt={userData.login} style={{ width: '100px', height: '100px' }} />
