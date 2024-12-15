@@ -20,8 +20,7 @@ const Search = () => {
             setUserData(data);
         } catch (err) {
             console.error(err); // Log the error for debugging
-            // Set the specified error message directly
-            setError('Looks like we can’t find the user');
+            setError('Looks like we can’t find the user'); // Set the specific error message
         } finally {
             setLoading(false);
         }
