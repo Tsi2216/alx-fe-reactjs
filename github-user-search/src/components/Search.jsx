@@ -15,10 +15,13 @@ const Search = () => {
         setError(null);
         try {
             const data = await fetchUserData(username, location, minRepos);
+            if (!data || data.length === 0) {
+                throw new Error("No users found");
+            }
             setUserData(data);
         } catch (err) {
             console.error(err);
-            setError("Looks like we cant find any users.");
+            setError("Looks like we can't find any users.");
         } finally {
             setLoading(false);
         }
@@ -33,6 +36,7 @@ const Search = () => {
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Enter GitHub username"
                     className="border p-2"
+                    style={{ color: 'red' }} // Change text color here
                     required
                 />
                 <input
@@ -41,6 +45,7 @@ const Search = () => {
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="Location"
                     className="border p-2"
+                    style={{ color: 'red' }} // Change text color here
                 />
                 <input
                     type="number"
@@ -48,6 +53,7 @@ const Search = () => {
                     onChange={(e) => setMinRepos(e.target.value)}
                     placeholder="Minimum Repositories"
                     className="border p-2"
+                    style={{ color: 'red' }} // Change text color here
                 />
                 <button type="submit" className="bg-blue-500 text-white p-2">Search</button>
             </form>
