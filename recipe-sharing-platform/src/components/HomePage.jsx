@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import recipeData from '../data.json'; // Adjust the path as necessary
+import { Link } from 'react-router-dom'; 
+import recipeData from '../data.json'; 
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
