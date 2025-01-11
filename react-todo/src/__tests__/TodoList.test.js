@@ -1,5 +1,6 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import TodoList from '../TodoList';
+import TodoList from '../components/TodoList.js';
 
 test('renders TodoList with initial todos', () => {
   render(<TodoList />);
@@ -31,8 +32,8 @@ test('toggles todo completion', () => {
 
 test('deletes a todo', () => {
   render(<TodoList />);
-  const deleteButton = screen.getByText(/Delete/i);
-  
-  fireEvent.click(deleteButton);
+  const deleteButtons = screen.getAllByText(/Delete/i); // Get all delete buttons
+
+  fireEvent.click(deleteButtons[0]); // Click the first delete button
   expect(screen.queryByText(/Learn React/i)).not.toBeInTheDocument();
 });

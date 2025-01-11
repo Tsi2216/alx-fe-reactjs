@@ -48,6 +48,7 @@
     "jest": "^27.5.1"
   },
   "jest": {
+    "setupFilesAfterEnv": ["<rootDir>/jest-setup.js"],
     "clearMocks": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
@@ -61,6 +62,7 @@
     },
     "transformIgnorePatterns": [
       "node_modules/(?!your-module-name)"
-    ]
+    ],
+    "testEnvironment": "jsdom"
   }
 }
